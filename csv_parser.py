@@ -9,10 +9,11 @@ class Csv_Parser:
             string = ', '.join(i[0])
             m = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', string)
             for sentence in m:
-                term = "MMP-13"
+                terms = ['MMP-13', 'inhibitor', 'orange', 'lemon']
                 words = sentence.split()
-                if term in words:
+                if any(word in words for word in terms):
                     print(sentence)
+
 if __name__ == '__main__':
     bio = Search()
     csv = Csv_Parser()
