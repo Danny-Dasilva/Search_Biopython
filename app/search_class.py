@@ -5,7 +5,10 @@
 # https://marcobonzanini.wordpress.com/2015/01/12/searching-pubmed-with-python/
 
 from Bio import Entrez
+
+from lxml import objectify, etree
 import json
+import itertools
 class Search:
     def __init__(self):
         self.count = '20'
@@ -37,10 +40,26 @@ class Search:
         for i, paper in enumerate(papers['PubmedArticle']): 
             T = "%d) %s" % (i+1, paper['MedlineCitation']['Article']['ArticleTitle'])
             A = "%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText'])
+            b = A.split('StringElement(')
+            C = []
+            for i in b:
+                 A = i.split(', attributes=')
+                 A[:] = [x for x in A if not x.startswith('{')]
+                 C.append(A)
+            if len(C) > 1:
+                joinedlst = []
+                for item in C:
+                    joinedlst = joinedlst + item
+                C = joinedlst
+                C = [', '.join(C)]
+
             title.append(T)
-            abstract.append(A)
+            abstract.append(C)
         return title, abstract
             
 
 
     
+# if __name__ == '__main__':
+#     bio = Search()
+#     title, abstract = bio.query("MMP-13 inhibitors", '4')

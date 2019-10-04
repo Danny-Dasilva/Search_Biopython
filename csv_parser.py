@@ -6,6 +6,7 @@ class Csv_Parser:
         self.val = 6
     def string_split(self, string):
         for i in string:
+            
             m = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', i)
             for i in m:
                 print(i)
