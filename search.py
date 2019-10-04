@@ -30,7 +30,6 @@ if __name__ == '__main__':
     id_list = results['IdList']
     papers = fetch_details(id_list)
     for i, paper in enumerate(papers['PubmedArticle']): 
-        #print(paper, "66666666666666/n")
         print("%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText']))
     # Pretty print the first paper in full
     #import json

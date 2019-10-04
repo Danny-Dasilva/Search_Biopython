@@ -5,7 +5,7 @@
 # https://marcobonzanini.wordpress.com/2015/01/12/searching-pubmed-with-python/
 
 from Bio import Entrez
-
+import json
 class Search:
     def __init__(self):
         self.count = '20'
@@ -33,7 +33,10 @@ class Search:
         id_list = results['IdList']
         papers = bio.fetch_details(id_list)
         for i, paper in enumerate(papers['PubmedArticle']): 
-            print("%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText']))
+            title = "%d) %s" % (i+1, paper['MedlineCitation']['Article']['ArticleTitle'])
+            abstract = "%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText'])
+            return title, abstract
+            
 
 if __name__ == '__main__':
     bio = Search()
