@@ -10,7 +10,7 @@ def search(query):
     Entrez.email = 'your.email@example.com'
     handle = Entrez.esearch(db='pubmed', 
                             sort='relevance', 
-                            retmax='200',
+                            retmax='20',
                             retmode='xml', 
                             term=query)
     results = Entrez.read(handle)
@@ -26,11 +26,12 @@ def fetch_details(id_list):
     return results
 
 if __name__ == '__main__':
-    results = search('fever')
+    results = search('MMP-13 inhibitor')
     id_list = results['IdList']
     papers = fetch_details(id_list)
     for i, paper in enumerate(papers['PubmedArticle']): 
-        print("%d) %s" % (i+1, paper['MedlineCitation']['Article']['ArticleTitle']))
+        #print(paper, "66666666666666/n")
+        print("%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText']))
     # Pretty print the first paper in full
     #import json
     #print(json.dumps(papers[0], indent=2, separators=(',', ':')))
