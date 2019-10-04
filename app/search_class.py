@@ -44,16 +44,26 @@ class Search:
             C = []
             for i in b:
                  A = i.split(', attributes=')
+                 
+                 
                  A[:] = [x for x in A if not x.startswith('{')]
                  C.append(A)
+            
             if len(C) > 1:
                 joinedlst = []
-                for item in C:
-                    joinedlst = joinedlst + item
+                for g in C:
+                    d = [x.strip("'") for x in g]
+                    joinedlst = joinedlst + d
                 C = joinedlst
-                C = [', '.join(C)]
+                #print(C)
+                C = ' '.join(C)
+                print(C)
+                #print(C)
+                C = [[C]]
+                
 
             title.append(T)
+            #print(C)
             abstract.append(C)
         return title, abstract
             
