@@ -17,7 +17,6 @@ class Search:
                                 retmode='xml', 
                                 term=query)
         results = Entrez.read(handle)
-        print(count)
         return results
 
     def fetch_details(self, id_list):
@@ -38,13 +37,6 @@ class Search:
 
 if __name__ == '__main__':
     bio = Search()
-    bio.query("MMP-13 inhibitors", '30')
-    # results = bio.search('MMP-13 inhibitor')
-    # id_list = results['IdList']
-    # papers = bio.fetch_details(id_list)
-    # for i, paper in enumerate(papers['PubmedArticle']): 
-    #     #print(paper, "66666666666666/n")
-    #     print("%d) %s" % (i+1, paper['MedlineCitation']['Article']['Abstract']['AbstractText']))
-    # # Pretty print the first paper in full
-    # #import json
-    # #print(json.dumps(papers[0], indent=2, separators=(',', ':')))
+
+    bio.query("MMP-13 inhibitors", '5')
+    
