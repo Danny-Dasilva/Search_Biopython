@@ -57,7 +57,6 @@ class Search:
                 C = joinedlst
                 #print(C)
                 C = ' '.join(C)
-                print(C)
                 #print(C)
                 C = [[C]]
                 
