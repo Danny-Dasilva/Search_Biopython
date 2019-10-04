@@ -6,9 +6,9 @@ class Csv_Parser:
         self.val = 6
     def string_split(self, string):
         for i in string:
-            
-            sentences = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', i)
-            print(sentences)
+            m = re.split(r'(?<=[^A-Z].[.?]) +(?=[A-Z])', i)
+            for i in m:
+                print(i)
 if __name__ == '__main__':
     bio = Search()
     csv = Csv_Parser()
